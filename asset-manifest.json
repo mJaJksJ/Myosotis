@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Myosotis/static/css/main.073c9b0a.css",
+    "main.js": "/Myosotis/static/js/main.f1bce9f6.js",
+    "static/js/787.791a2660.chunk.js": "/Myosotis/static/js/787.791a2660.chunk.js",
+    "static/media/logo.svg": "/Myosotis/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Myosotis/index.html",
+    "main.073c9b0a.css.map": "/Myosotis/static/css/main.073c9b0a.css.map",
+    "main.f1bce9f6.js.map": "/Myosotis/static/js/main.f1bce9f6.js.map",
+    "787.791a2660.chunk.js.map": "/Myosotis/static/js/787.791a2660.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.f1bce9f6.js"
+  ]
+}
