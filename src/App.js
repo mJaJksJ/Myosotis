@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import TextAudioInput from './Components/TextAudioInput/TextAudioInput';
 import Survey from "./Components/Survey/Survey";

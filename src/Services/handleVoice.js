@@ -1,22 +1,29 @@
-export const voiceElement = (speechElement) =>{
+export const getVoiceElement = (speechElement) =>{
     const speech = new SpeechSynthesisUtterance(speechElement); 
     speech.lang = "ru";
     const synth = window.speechSynthesis;
     synth.speak(speech);   
 }
 
-export const getSpokenPhrase =() => {
+export const getSpokenPhrase = (setPhrase) => {
     // eslint-disable-next-line no-undef
     var recognizer = new webkitSpeechRecognition();
     recognizer.interimResults = true;
     recognizer.lang = 'ru-Ru';
+    var str = "";
+    recognizer.start();
     recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
         if (result.isFinal) {
-          return result;
+            //  str =  result[0].transcript;
         } else {
-          console.log('Промежуточный результат: ', result[0].transcript);
+          str += result[0].transcript;
+          setPhrase(str);
         }
       };
-    recognizer.start();
+    recognizer.onend = function(){
+        setPhrase(str);
+    } 
+    
+    
 }
