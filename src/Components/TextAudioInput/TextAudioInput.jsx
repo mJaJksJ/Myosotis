@@ -1,17 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Card, InputText} from "primereact";
-import {getVoiceElement} from "../../Services/handleVoice";
+import {getSpokenPhrase, getVoiceElement} from "../../Services/handleVoice";
+import {  getInitFieldPhrase,getFieldInformation } from '../../Services/basePhrases';
 
 const TextAudioInput = (props) => {
     const label = props.label
-
+    const [phrase, setPhrase] = useState('123');
+    const [voiceElement, setVoiceElement] = useState(false);
     useEffect(() => {
-        getVoiceElement(label);
-    },[label]);
+        let ans = getInitFieldPhrase() + " " + label +  ". " + getFieldInformation();
+        getVoiceElement(ans, setVoiceElement);
+        //getSpokenPhrase(setPhrase);
+    },[]);
+    useEffect(() => {
+        if(voiceElement){
+             getSpokenPhrase(setPhrase);
+        }
+    },[voiceElement]);
 
     return (
         <Card className='text' title={props.label}>
-            <InputText/>
+            <InputText value={phrase}/>
         </Card>
     )
 };

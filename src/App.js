@@ -7,8 +7,7 @@ import "primeicons/primeicons.css";
 function App() {
     const questions = [
         { label: 'Фамилия', type: 'text' },
-        { label: 'Имя', type: 'text' },
-        { label: 'Отчество', type: 'text' }
+        
     ]
 
   return (
