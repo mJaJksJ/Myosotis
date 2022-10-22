@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import TextInput from './Components/TextInput';
+import TextAudioInput from './Components/TextAudioInput/TextAudioInput';
 import Survey from "./Components/Survey/Survey";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 function App() {
     const questions = [
@@ -12,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Survey questions={questions}></Survey>
+      <Survey questions={questions}/>
     </div>
   );
 }

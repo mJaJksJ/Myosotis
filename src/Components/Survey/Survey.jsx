@@ -1,18 +1,22 @@
 import React from 'react';
-import TextInput from "../TextInput";
+import TextAudioInput from "../TextAudioInput/TextAudioInput";
+import styleClasses from "./Survey.module.css";
 
 const Survey = (props) => {
     const questionField = props.questions;
 
     return (
-        questionField.map((field, idx) => {
-            switch (field.type) {
-                case 'text':
-                    return <TextInput key={idx} label={field.label}/>
-                default:
-                    return null
-            }
-        })
+        <div style={{width: '50%'}}>
+            {questionField.map((field, idx) =>
+            {
+                switch (field.type) {
+                    case 'text':
+                        return <div className={styleClasses.surveyCard}><TextAudioInput key={idx} label={field.label}/></div>
+                    default:
+                        return null
+                }
+            })}
+        </div>
     );
 };
 
