@@ -1,34 +1,56 @@
-export const getVoiceElement = (speechElement, setVoiceElement) =>{
-    const speech = new SpeechSynthesisUtterance(speechElement); 
-    speech.lang = "ru";
-    const synth = window.speechSynthesis;
-    speech.onend = function(){
-        setVoiceElement(prev => !prev);
-    }
-    synth.speak(speech);  
-}
+import { getStopWordOnEnd } from "./basePhrases";
 
-export const getSpokenPhrase = (setPhrase) => {;
-    let recognizer = new window.webkitSpeechRecognition();
-    recognizer.interimResults = true;
-    recognizer.lang = 'ru-Ru';
-    let str = "";
-    recognizer.onresult = function (event) {
-        let result = event.results[event.resultIndex];
-        if (result.isFinal) {
-            str =  result[0].transcript;
-            console.log(result[0].transcrip);
-        } else {
-          str += result[0].transcript;
-          console.log(result[0].transcript);
-        }
-      };
-    recognizer.onend = function(){
-        console.log("*");console.log(str);
+export const getVoiceElement = (speechElement, setVoiceElement) => {
+  const speech = new SpeechSynthesisUtterance(speechElement);
+  speech.lang = "ru";
+  const synth = window.speechSynthesis;
+  speech.onend = function () {
+    setVoiceElement((prev) => !prev);
+  };
+  synth.speak(speech);
+};
+
+export const getSpokenPhrase = (
+  setPhrase,
+  setBool,
+  getStopWord,
+  ending = null
+) => {
+  let recognizer = new window.webkitSpeechRecognition();
+  recognizer.interimResults = true;
+  recognizer.lang = "ru-Ru";
+  let str = "";
+  recognizer.start();
+  recognizer.onresult = function (event) {
+    let result = event.results[event.resultIndex];
+    if (result.isFinal) {
+      str += result[0].transcript;
+    }
+  };
+  recognizer.onend = function () {
+    if (ending === null) {
+      if (getStopWord.every((x) => str.toLowerCase().indexOf(x) === -1)) {
+        recognizer.start();
+        console.log(str);
         setPhrase(str);
-    } 
-    recognizer.start();
-   
-    
-    
-}
+      } else {
+        setBool((prev) => !prev);
+        recognizer.stop();
+        console.log(str);
+      }
+    } else {
+      console.log(str);
+      if (str.toLowerCase().indexOf("занов") !== -1) {
+        ending((prev) => !prev);
+        console.log("2");
+        setPhrase("");
+        recognizer.stop();
+      } else if (str.toLowerCase().indexOf("ответит") !== -1) {
+        recognizer.stop();
+      }
+      else{
+        recognizer.start();
+      }
+    }
+  };
+};
