@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBoxInput from '../CheckBoxInput/CheckBoxInput';
+import CheckBoxAudioInput from '../CheckBoxAudioInput/CheckBoxAudioInput';
 import FileInput from '../FileInputComponent/FileInput';
 import TextAudioInput from "../TextAudioInput/TextAudioInput";
 import styleClasses from "./Survey.module.css";
@@ -19,7 +19,7 @@ const Survey = (props) => {
             {
                 switch (field.type) {
                     case 'text':
-                        return <div className={styleClasses.surveyCard}><CheckBoxInput key={idx} label={field.label} checkBoxes={checkBoxes}/></div>
+                        return <div className={styleClasses.surveyCard}><CheckBoxAudioInput key={idx} label={field.label} checkBoxes={checkBoxes}/></div>
                     default:
                         return null
                 }

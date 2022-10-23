@@ -2,6 +2,7 @@ import React from 'react';
 import TextAudioInput from "../TextAudioInput/TextAudioInput";
 import styleClasses from "./SurveyField.module.css";
 import {useLocation} from "react-router-dom";
+import CheckBoxAudioInput from "../CheckBoxAudioInput/CheckBoxAudioInput";
 
 let Switcher = (props) => {
     let question = props.question;
@@ -9,6 +10,10 @@ let Switcher = (props) => {
     switch (question.field_type) {
         case 'text':
             component = (<div className={styleClasses.surveyCard}><TextAudioInput label={question.field_name}/>
+            </div>)
+            break;
+        case 'checkbox':
+            component = (<div className={styleClasses.surveyCard}><CheckBoxAudioInput label={question.field_name}/>
             </div>)
             break;
         default:

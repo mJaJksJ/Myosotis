@@ -12,7 +12,7 @@ import {
 } from "../../Services/basePhrases";
 import { getStopWordOnEnd } from "../../Services/basePhrases";
 
-const CheckBoxInput = (props) => {
+const CheckBoxAudioInput = (props) => {
   const label = props.label;
   const checkBoxes = props.checkBoxes;
   const [filterCheckBoxes, setFilterCheckBoxes] = useState([]);
@@ -97,4 +97,4 @@ const CheckBoxInput = (props) => {
   );
 };
 
-export default CheckBoxInput;
+export default CheckBoxAudioInput;
