@@ -18,3 +18,18 @@ export const getEndOfEnter = () => {
 export const getStopWordOnAgreement = () => {
     return ["заново", "ответить"];
 }
+
+export const getFieldFileInformation = () =>{
+    return "Когда будете готовы нажмите загрузить.";
+}
+
+export const getStopWordOnFile = () => {
+    return ["фото"];
+}
+
+export const getList = () => {
+    return  "Скажите ключевое слово для вывода вариантов";
+}
+export const getListChoice = () => {
+    return "Выберите вариант, сказав его номер. Если его нет и вы хотите назвать другое слово скажите начало."
+}
