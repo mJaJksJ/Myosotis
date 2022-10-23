@@ -84,8 +84,14 @@ export const getTriggerPhrase = (stopWords, setBool) => {
           recognizer.stop();
           setBool((prev) => !prev);
           break;
+        case "начат":
+          console.log("popal");
+          recognizer.stop();
+          setBool((prev) => !prev);
+          break;
         default:
           break;
+        
       }
     } else {
       recognizer.start();
@@ -102,11 +108,10 @@ export const getNumber = (setNumber, stopWords, setAgain, setIsNumber) => {
   recognizer.onresult = function (event) {
     let result = event.results[event.resultIndex];
     if (result.isFinal) {
-      str += result[0].transcript;
+      str += " " + result[0].transcript;
     }
   };
   recognizer.onend = function () {
-    console.log(str);
     if(str.toLowerCase().indexOf("один") !== -1) {
       console.log("давай один");
       setNumber(1);
@@ -128,6 +133,11 @@ export const getNumber = (setNumber, stopWords, setAgain, setIsNumber) => {
       }
       switch (stopWord) {
         case "начало":
+          recognizer.stop();
+          setAgain(prev => !prev);
+          break;
+        case "закончить":
+          console.log(str);
           recognizer.stop();
           setAgain(prev => !prev);
           break;
