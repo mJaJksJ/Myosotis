@@ -21,7 +21,7 @@ let Switcher = (props) => {
 const SurveyField = (props) => {
     const question = useLocation().state;
     return (
-        <div style={{width: '50%'}}>
+        <div>
             <Switcher question={question}/>
         </div>
     );

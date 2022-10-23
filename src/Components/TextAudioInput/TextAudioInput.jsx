@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import {Card, InputText} from "primereact";
+import React, {useEffect, useState} from 'react';
+import {Card, InputTextarea} from "primereact";
 import {getSpokenPhrase, getVoiceElement} from "../../Services/handleVoice";
-import {  getInitFieldPhrase,getFieldInformation, getEndOfEnter, getStopWordOnEnd, getStopWordOnAgreement } from '../../Services/basePhrases';
+import {
+    getInitFieldPhrase,
+    getFieldInformation,
+    getEndOfEnter,
+    getStopWordOnEnd,
+    getStopWordOnAgreement
+} from '../../Services/basePhrases';
+import {useNavigate} from "react-router-dom";
 
 const TextAudioInput = (props) => {
     const label = props.label
@@ -12,34 +19,54 @@ const TextAudioInput = (props) => {
     const [ending, setEnding] = useState('');
 
     useEffect(() => {
-        let ans = getInitFieldPhrase() + " " + label +  ". " + getFieldInformation();
+        let ans = getInitFieldPhrase() + " " + label + ". " + getFieldInformation();
         getVoiceElement(ans, setVoiceElement);
-    },[]);
+    }, []);
     useEffect(() => {
-        if(isVoiceElement !== null){
+        if (isVoiceElement !== null) {
             console.log("voice");
             let stopWord = getStopWordOnEnd();
-             getSpokenPhrase(setPhrase, setEndPhrase, stopWord);
+            getSpokenPhrase(setPhrase, setEndPhrase, stopWord);
         }
-    },[isVoiceElement]);
+    }, [isVoiceElement]);
     useEffect(() => {
-        if(isEndPhrase !== null){
+        if (isEndPhrase !== null) {
             let ans = getEndOfEnter();
             getVoiceElement(ans, setAnsOnEnd);
         }
-    },[isEndPhrase]);
+    }, [isEndPhrase]);
     useEffect(() => {
-        if(isAnsOnEnd !== null){
+        if (isAnsOnEnd !== null) {
             let stopWord = getStopWordOnAgreement();
-            getSpokenPhrase(setPhrase, setAnsOnEnd, stopWord, setVoiceElement);
+            getSpokenPhrase(setPhrase, setAnsOnEnd, stopWord, setVoiceElement, setReturnToSurvey);
         }
-    },[isAnsOnEnd]);
+    }, [isAnsOnEnd]);
 
+    const [returnToSurvey, setReturnToSurvey] = useState(false)
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (returnToSurvey) {
+            navigate('/survey')
+        }
+    })
 
     return (
-        <Card className='text' title={props.label}>
-            <InputText value={phrase}/>
-        </Card>
+        <div style={{
+            display: "flex",
+            height: '100vh',
+            verticalAlign: 'center'
+        }}>
+            <div style={{
+                width: '100vw',
+                backgroundColor: '#B2DC58',
+                margin: '10px',
+                borderRadius:'6px'
+            }} className='text'>
+                <h3 style={{margin: 0, padding: '10px', color: '#FFFFFF'}}>{props.label}</h3>
+                <InputTextarea style={{width: '90%', height:'82%'}} value={phrase}/>
+            </div>
+        </div>
+
     )
 };
 
