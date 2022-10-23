@@ -1,7 +1,10 @@
 import React, {useContext} from 'react';
 import {useNavigate} from "react-router-dom";
 import {AnsContext} from "../../App";
-
+import { useEffect } from 'react';
+import { getForm } from '../../Services/basePhrases';
+import { getNumber, getVoiceElement } from '../../Services/handleVoice';
+import { useState } from 'react';
 const SurveyFieldsList = (props) => {
     const data = [{
         "field_id": 1,
@@ -43,13 +46,39 @@ const SurveyFieldsList = (props) => {
     const surveyName = {id: 1, name: 'Отчет по работе тестового приложения'}
     const navigate = useNavigate();
     const ans = useContext((AnsContext));
+    const [number, setNumber] = useState(0);
+    const [isVoiceElement, setVoiceElement] = useState(null);
+    const [isNumber, setIsNumber] = useState(null);
+    const [isEnd, setIsEnd] = useState(null);
+    useEffect(() => {
+        let ans = "Вы попали на форму: " + surveyName.name + ". " + getForm();
+        getVoiceElement(ans, setVoiceElement);
+    }, []);
+    useEffect(() => {
+        if(isVoiceElement !== null){
+            getNumber(setNumber, ["закончить"], setIsEnd, setIsNumber);    
+        }
+    },[isVoiceElement]);
+    useEffect(() => {
+        if(isNumber !== null){
+            console.log(isEnd);
+            if(isEnd !== null){
+                console.log("выйти");
+            }
+            else{
+            console.log(number);
+            let temp = document.getElementById(number);
+            temp.click();
+            }
+        }
+    })
     return (<>
             <div style={{backgroundColor: '#32465A', color: '#FFFFFF', padding:'10px'}}>
                 Опрос №{surveyName.id}. {surveyName.name}
             </div>
             <div>
                 <ul style={{padding: 0, alignItems: 'center'}}>
-                    {data.map(x => <li style={{
+                    {data.map((x,idx) => <li id = {idx + 1}style={{
                         listStyle: 'none',
                         backgroundColor: '#B2DC58',
                         color: '#162041',
