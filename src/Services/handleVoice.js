@@ -108,7 +108,7 @@ export const getNumber = (setNumber, stopWords, setAgain, setIsNumber) => {
   recognizer.onend = function () {
     console.log(str);
     if(str.toLowerCase().indexOf("один") !== -1) {
-
+      console.log("давай один");
       setNumber(1);
       recognizer.stop();
       setIsNumber(prev => !prev);
@@ -126,7 +126,6 @@ export const getNumber = (setNumber, stopWords, setAgain, setIsNumber) => {
           break;
         }
       }
-      console.log(stopWord);
       switch (stopWord) {
         case "начало":
           recognizer.stop();

@@ -17,7 +17,7 @@ const CheckBoxAudioInput = (props) => {
   const checkBoxes = props.checkBoxes;
   const [filterCheckBoxes, setFilterCheckBoxes] = useState([]);
 
-  const [number, setNumber] = useState("123");
+  const [number, setNumber] = useState(0);
   const [phrase, setPhrase] = useState();
   const [isVoiceElement, setVoiceElement] = useState(null);
   const [isChoiceActive, setActiveChoice] = useState(null);
@@ -39,9 +39,11 @@ const CheckBoxAudioInput = (props) => {
   useEffect(() => {
     if (isChoiceActive !== null) {
       if (phrase.toLowerCase().indexOf("ответит") === -1) {
+        console.log(checkBoxes);
+        console.log(phrase)
         setFilterCheckBoxes(
           checkBoxes.filter(
-            (box) => phrase.toLowerCase().indexOf(box.name.toLowerCase()) !== -1
+            (box) => box.name.toLowerCase().includes(phrase.toLowerCase().substring(0, phrase.length-1))
           )
         );
         let ans = getListChoice();
@@ -60,13 +62,14 @@ const CheckBoxAudioInput = (props) => {
   useEffect(() => {
     if (isNumber !== null) {
       console.log(filterCheckBoxes);
-      let temp = document.getElementById(number.toString());
+      let temp = document.getElementById(number);
+      console.log(number);
       console.log(temp);
       temp.checked = true;
-      let index = filterCheckBoxes[number - 1].id;
+      let index = filterCheckBoxes[number-1].id;
       console.log(index);
-      console.log(checkBoxes[index - 1]);
-      checkBoxes[index - 1].checked = true;
+      console.log(checkBoxes[index]);
+      checkBoxes[index].checked = true;
       console.log(checkBoxes);
       setNextNumber((prev) => !prev);
     }
@@ -79,7 +82,7 @@ const CheckBoxAudioInput = (props) => {
   return (
     <div>
       <h3 id="label" className="text">
-        Название поля
+        {props.label}
       </h3>
       {filterCheckBoxes.map((filterCheckBox, idx) => (
         <label>
