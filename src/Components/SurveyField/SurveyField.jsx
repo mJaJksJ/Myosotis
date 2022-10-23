@@ -9,7 +9,7 @@ let Switcher = (props) => {
     let component = <></>;
     switch (question.field_type) {
         case 'text':
-            component = (<div className={styleClasses.surveyCard}><TextAudioInput label={question.field_name}/>
+            component = (<div className={styleClasses.surveyCard}><TextAudioInput label={question.field_name} id={question.field_id}/>
             </div>)
             break;
         case 'checkbox':

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Card, InputTextarea} from "primereact";
 import {getSpokenPhrase, getVoiceElement} from "../../Services/handleVoice";
 import {
@@ -9,6 +9,7 @@ import {
     getStopWordOnAgreement
 } from '../../Services/basePhrases';
 import {useNavigate} from "react-router-dom";
+import {AnsContext} from "../../App";
 
 const TextAudioInput = (props) => {
     const label = props.label
@@ -18,6 +19,7 @@ const TextAudioInput = (props) => {
     const [isAnsOnEnd, setAnsOnEnd] = useState(null);
     const [ending, setEnding] = useState('');
 
+    const ans = useContext((AnsContext));
     const [returnToSurvey, setReturnToSurvey] = useState(false)
 
     useEffect(() => {
@@ -47,6 +49,7 @@ const TextAudioInput = (props) => {
     const navigate = useNavigate();
     useEffect(() => {
         if (returnToSurvey) {
+            ans.push({field_id: props.id, field_description: phrase});
             navigate('/survey')
         }
     })

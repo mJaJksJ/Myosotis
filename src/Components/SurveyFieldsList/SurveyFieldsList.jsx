@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from "react-router-dom";
+import {AnsContext} from "../../App";
 
 const SurveyFieldsList = (props) => {
     const data = [{
@@ -57,6 +58,7 @@ const SurveyFieldsList = (props) => {
 
     const surveyName = {id: 1, name: 'Отчет по работе тестового приложения'}
     const navigate = useNavigate();
+    const ans = useContext((AnsContext));
     return (
         <>
             <div style={{backgroundColor: '#32465A', color: '#FFFFFF'}}>
@@ -76,6 +78,9 @@ const SurveyFieldsList = (props) => {
                             #{x.field_id}. {x.field_name}
                         </li>)}
                 </ul>
+            </div>
+            <div>
+                {JSON.stringify(ans)}
             </div>
         </>
     );
