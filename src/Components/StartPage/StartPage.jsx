@@ -1,14 +1,29 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import picture from './/start_picture.jpg'
+import {Button} from "primereact";
+import appStyles from "../../App.css";
 
 const StartPage = (props) => {
-
+    const navigate = useNavigate();
     return (
-        <div style={{display:"flex", justifyContent:"center", flexDirection:'column'}}>
+        <div style={{display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center'}}>
             <div>
-                <img src={'https://github.com/mJaJksJ/Myosotis/blob/StartPageAndSurveys/public/images/start_picture.jpg'} alt="Я Аянами Рей? А ты кто? Айянами Рей. Значит ты тоже Аянами Рей. Да, я та кого зовут Аянами Рей."/>
+                <img style={{width: '100vw'}} src={picture}
+                     alt="Я Аянами Рей? А ты кто? Айянами Рей. Значит ты тоже Аянами Рей. Да, я та кого зовут Аянами Рей."/>
             </div>
-            <Link to={'/survey'}>Начать</Link>
+            <div>
+                Я Аянами Рей? А ты кто? Айянами Рей. Значит ты тоже Аянами Рей. Да, я та кого зовут Аянами Рей.
+            </div>
+            <Button style={{
+                width: '150px',
+                margin: '10px',
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                backgroundColor: '#b2dc58',
+                border: "none"
+            }} onClick={() => navigate('/survey')}>Начать</Button>
         </div>
     );
 };

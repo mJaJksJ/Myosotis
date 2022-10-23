@@ -4,7 +4,6 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AppRoutes from "./AppRoutes";
-import TextAudioInput from "./Components/TextAudioInput/TextAudioInput";
 
 function App() {
     return (
