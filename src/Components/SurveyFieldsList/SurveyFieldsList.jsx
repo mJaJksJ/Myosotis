@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from "primereact";
 
 const SurveyFieldsList = (props) => {
     const data = [{
@@ -55,15 +54,29 @@ const SurveyFieldsList = (props) => {
             ]
         }];
 
+    const surveyName = {id: 1, name: 'Отчет по работе тестового приложения'}
+
     return (
-        <div style={{display:"flex", justifyContent:"center"}}>
-            <ul>
-                {data.map(x =>
-                <li>
-                    {x.field_name}
-                </li>)}
-            </ul>
-        </div>
+        <>
+            <div style={{backgroundColor: '#32465A', color: '#FFFFFF'}}>
+                Опрос №{surveyName.id}. {surveyName.name}
+            </div>
+            <div>
+                <ul style={{padding: 0, alignItems: 'center'}}>
+                    {data.map(x =>
+                        <li style={{
+                            listStyle: 'none',
+                            backgroundColor: '#B2DC58',
+                            color: '#162041',
+                            borderRadius: '30px',
+                            margin: '10px',
+                            padding: '10px'
+                        }}>
+                            #{x.field_id}. {x.field_name}
+                        </li>)}
+                </ul>
+            </div>
+        </>
     );
 };
 
