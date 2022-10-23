@@ -12,6 +12,7 @@ import {
 } from "../../Services/basePhrases";
 import { getStopWordOnEnd } from "../../Services/basePhrases";
 import {AnsContext} from "../../App";
+import {useNavigate} from "react-router-dom";
 
 const CheckBoxAudioInput = (props) => {
   const label = props.label;
@@ -26,6 +27,7 @@ const CheckBoxAudioInput = (props) => {
   const [isNumber, setIsNumber] = useState(null);
   const [isNextNumber, setNextNumber] = useState(null);
   const [fake, setFake] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     let ans = getInitFieldPhrase() + " " + label + ". " + getList();
     getVoiceElement(ans, setVoiceElement);
@@ -59,6 +61,7 @@ const CheckBoxAudioInput = (props) => {
         });
 ans.push({field_id: props.id, field_values: chked})
         console.log("ответ записан");
+        navigate('/survey');
       }
     }
   }, [isChoiceActive]);
