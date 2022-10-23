@@ -1,6 +1,7 @@
 import StartPage from "./Components/StartPage/StartPage";
 import SurveyFieldsList from "./Components/SurveyFieldsList/SurveyFieldsList";
 import TextAudioInput from "./Components/TextAudioInput/TextAudioInput";
+import SurveyField from "./Components/SurveyField/SurveyField";
 
 const AppRoutes =  [
     {
@@ -17,7 +18,7 @@ const AppRoutes =  [
     },
     {
         path: '/survey-field',
-        element: <TextAudioInput />
+        element: <SurveyField />
     }
 ];
 

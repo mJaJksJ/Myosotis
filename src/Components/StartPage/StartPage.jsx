@@ -22,7 +22,8 @@ const StartPage = (props) => {
                 display: 'flex',
                 justifyContent: 'center',
                 backgroundColor: '#b2dc58',
-                border: "none"
+                border: "none",
+                borderRadius: '30px'
             }} onClick={() => navigate('/survey')}>Начать</Button>
         </div>
     );
