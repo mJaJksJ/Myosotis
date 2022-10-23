@@ -6,12 +6,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import React from "react";
 
-export const AnsContext = React.createContext([{id:'hu',val:124},{id:'mj',events:['qwer','asdf',12]}]);
+export const AnsContext = React.createContext([]);
 
 function App() {
     return (
         <div className="App">
-            <AnsContext.Provider value={[{id:'hu',val:124},{id:'mj',events:['qwer','asdf',12]}]}>
+            <AnsContext.Provider value={[]}>
                 <BrowserRouter>
                     <Routes>
                         {AppRoutes.map((route, index) => {
@@ -21,8 +21,6 @@ function App() {
                     </Routes>
                 </BrowserRouter>
             </AnsContext.Provider>
-
-
         </div>
     );
 }
