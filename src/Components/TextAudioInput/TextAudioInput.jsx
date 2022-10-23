@@ -18,6 +18,8 @@ const TextAudioInput = (props) => {
     const [isAnsOnEnd, setAnsOnEnd] = useState(null);
     const [ending, setEnding] = useState('');
 
+    const [returnToSurvey, setReturnToSurvey] = useState(false)
+
     useEffect(() => {
         let ans = getInitFieldPhrase() + " " + label + ". " + getFieldInformation();
         getVoiceElement(ans, setVoiceElement);
@@ -42,7 +44,6 @@ const TextAudioInput = (props) => {
         }
     }, [isAnsOnEnd]);
 
-    const [returnToSurvey, setReturnToSurvey] = useState(false)
     const navigate = useNavigate();
     useEffect(() => {
         if (returnToSurvey) {
