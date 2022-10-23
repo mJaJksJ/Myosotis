@@ -15,7 +15,7 @@ export const getSpokenPhrase = (
   setBool,
   getStopWord,
   ending = null,
-  //setReturnToSurvey = null
+  setReturnToSurvey = null
 ) => {
   let recognizer = new window.webkitSpeechRecognition();
   recognizer.interimResults = true;
@@ -48,9 +48,9 @@ export const getSpokenPhrase = (
         recognizer.stop();
       } else if (str.toLowerCase().indexOf("ответит") !== -1) {
         recognizer.stop();
-        /*if(setReturnToSurvey){
+        if(setReturnToSurvey){
           setReturnToSurvey(prev => !prev);
-        }*/
+        }
       }
       else{
         recognizer.start();
