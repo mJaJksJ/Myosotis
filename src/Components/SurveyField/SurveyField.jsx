@@ -15,11 +15,11 @@ let Switcher = (props) => {
         case 'checkbox':
             let checkBoxes = [];
             let i = 0;
-            for(var el of Object.values(question.field_values)){          
+            for(let el of Object.values(question.field_values)){
                 checkBoxes.push({id: i, name: el, checked: false})
                 i++;
             }
-            component = (<div className={styleClasses.surveyCard}><CheckBoxAudioInput label={question.field_name}
+            component = (<div className={styleClasses.surveyCard}><CheckBoxAudioInput label={question.field_name} id={question.field_id}
             checkBoxes={checkBoxes}/>
             </div>)
             break;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {
   getKeyWord,
   getNumber,
@@ -11,12 +11,13 @@ import {
   getListChoice,
 } from "../../Services/basePhrases";
 import { getStopWordOnEnd } from "../../Services/basePhrases";
+import {AnsContext} from "../../App";
 
 const CheckBoxAudioInput = (props) => {
   const label = props.label;
   const checkBoxes = props.checkBoxes;
   const [filterCheckBoxes, setFilterCheckBoxes] = useState([]);
-
+  const ans = useContext((AnsContext));
   const [number, setNumber] = useState(0);
   const [phrase, setPhrase] = useState();
   const [isVoiceElement, setVoiceElement] = useState(null);
@@ -50,6 +51,13 @@ const CheckBoxAudioInput = (props) => {
         getVoiceElement(ans, setAnsOnEnd);
       }
       else{
+        const chked = [];
+        checkBoxes.forEach(chx => {
+          if(chx.checked){
+            chked.push(chx.name);
+          }
+        });
+ans.push({field_id: props.id, field_values: chked})
         console.log("ответ записан");
       }
     }

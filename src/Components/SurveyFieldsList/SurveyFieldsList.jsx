@@ -80,7 +80,7 @@ const SurveyFieldsList = (props) => {
                 </ul>
             </div>
             <div>
-                {JSON.stringify(ans)}
+                {JSON.stringify(ans).split(',', )}
             </div>
         </>
     );
