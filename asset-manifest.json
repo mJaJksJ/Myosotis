@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Myosotis/static/css/main.a316af15.css",
-    "main.js": "/Myosotis/static/js/main.a1e12a2c.js",
+    "main.js": "/Myosotis/static/js/main.5ddfc042.js",
     "static/js/663.af368d8b.chunk.js": "/Myosotis/static/js/663.af368d8b.chunk.js",
     "static/js/921.a18936e5.chunk.js": "/Myosotis/static/js/921.a18936e5.chunk.js",
     "static/js/787.791a2660.chunk.js": "/Myosotis/static/js/787.791a2660.chunk.js",
@@ -13,13 +13,13 @@
     "static/media/primeicons.woff2": "/Myosotis/static/media/primeicons.78172950b335ccdb94e2.woff2",
     "index.html": "/Myosotis/index.html",
     "main.a316af15.css.map": "/Myosotis/static/css/main.a316af15.css.map",
-    "main.a1e12a2c.js.map": "/Myosotis/static/js/main.a1e12a2c.js.map",
+    "main.5ddfc042.js.map": "/Myosotis/static/js/main.5ddfc042.js.map",
     "663.af368d8b.chunk.js.map": "/Myosotis/static/js/663.af368d8b.chunk.js.map",
     "921.a18936e5.chunk.js.map": "/Myosotis/static/js/921.a18936e5.chunk.js.map",
     "787.791a2660.chunk.js.map": "/Myosotis/static/js/787.791a2660.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a316af15.css",
-    "static/js/main.a1e12a2c.js"
+    "static/js/main.5ddfc042.js"
   ]
 }
